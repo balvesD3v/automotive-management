@@ -1,20 +1,17 @@
 import { Entity } from 'src/core/entities/entity'
 import { UniqueEntityId } from 'src/core/entities/unique-entity-id'
+import { Role } from './role/enum.roles'
 
 interface CustomerProps {
-  firstName: string
-  lastName: string
+  name: string
   email: string
   password: string
+  role: Role
 }
 
 export class Customer extends Entity<CustomerProps> {
-  get firstName() {
-    return this.props.firstName
-  }
-
-  get lastName() {
-    return this.props.lastName
+  get name() {
+    return this.props.name
   }
 
   get email() {
@@ -23,6 +20,10 @@ export class Customer extends Entity<CustomerProps> {
 
   get password() {
     return this.props.password
+  }
+
+  get role() {
+    return this.props.role
   }
 
   static create(props: CustomerProps, id?: UniqueEntityId) {
