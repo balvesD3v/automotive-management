@@ -1,6 +1,5 @@
 import { UniqueEntityId } from '@/core/entities/unique-entity-id'
 import { Customer } from '@/domain/enterprise/customer'
-import { RoleMapper } from '@/infra/utils/role-mapper'
 import { User as PrismaUser, Prisma } from '@prisma/client'
 
 export class PrismaCustomerMapper {
@@ -10,7 +9,6 @@ export class PrismaCustomerMapper {
         name: raw.name,
         email: raw.email,
         password: raw.password,
-        role: RoleMapper.mapRoleToDomain(raw.role),
       },
       new UniqueEntityId(raw.id),
     )
@@ -22,7 +20,6 @@ export class PrismaCustomerMapper {
       name: customer.name.toString(),
       email: customer.email.toString(),
       password: customer.password,
-      role: RoleMapper.mapRoleToPrisma(customer.role),
     }
   }
 }
