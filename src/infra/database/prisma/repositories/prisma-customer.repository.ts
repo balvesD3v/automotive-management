@@ -2,7 +2,9 @@ import { CustomerRepository } from '@/domain/application/repositories/customer.r
 import { Customer } from '@/domain/enterprise/customer'
 import { PrismaService } from '../prisma.service'
 import { PrismaCustomerMapper } from '../mappers/prisma-customer-mappers'
+import { Injectable } from '@nestjs/common'
 
+@Injectable()
 export class PrismaCustomerRepository implements CustomerRepository {
   constructor(private readonly prisma: PrismaService) {}
 
